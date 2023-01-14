@@ -1,0 +1,14 @@
+{
+    "name": "Időjárás",
+    "version": "1.0.0",
+    "description": "Időjárás Nagymegyeren",
+    "manifest_version": 3,
+    "author": "Mikuláš Ábrahám",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "Időjárás",
+        "default_icon": {
+            "32": "img/icon32.png"
+    }
+}
+}
