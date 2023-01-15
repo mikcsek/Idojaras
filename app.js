@@ -59,7 +59,7 @@ var idojaras    = document.getElementById("idojaras");
         
 
         
-        //console.log(eredmeny);
+        console.log(eredmeny);
 
         link = `https://api.open-meteo.com/v1/forecast?latitude=${eredmeny.textContent}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,showers_sum,snowfall_sum&current_weather=true&timezone=Europe%2FBerlin`;
 
