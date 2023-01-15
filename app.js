@@ -15,16 +15,12 @@ var idojaras    = document.getElementById("idojaras");
 
     // sorba rendezi a város neveket és kiírja
 
-    window.addEventListener("load", function()  {
+    window.addEventListener("load", async ()  =>  {
 
-        var xhr = new XMLHttpRequest();
+        let res = await fetch("hu.json");
+        let data = await res.json();
 
-        xhr.open("GET", "hu.json", true);
 
-        xhr.onload = function() {
-
-            if(xhr.status === 200)  {
-                var data = JSON.parse(xhr.responseText);
                 console.log(data);
 
                 data = data.sort((a, b) => {
@@ -47,12 +43,8 @@ var idojaras    = document.getElementById("idojaras");
                 }
                 varosAdatok.innerHTML = varosAdatokOutput;
                 varosNevek.innerHTML = output;
-            }
-
-
             
-        }
-        xhr.send();
+
     })
 
 
