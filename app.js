@@ -78,18 +78,10 @@ var idojaras    = document.getElementById("idojaras");
     
 window.addEventListener("load", idojarasLekeres());
 
-    function idojarasLekeres() {
+    async function idojarasLekeres() {
         
-
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.open("GET", link, true);
-
-    xhr.onload = function() {
-
-        if(xhr.status === 200)  {
-            var data = JSON.parse(xhr.responseText);
+        let res = await fetch(link);
+        let data = await res.json();
             console.log(data);
 
             var dateOutput = `<span class="bold">Idő: </span>${data.current_weather.time} ${data.timezone_abbreviation}`;
@@ -377,11 +369,10 @@ window.addEventListener("load", idojarasLekeres());
             
             napok.innerHTML = outputElso + outputMasodik + outputHarmadik + outputNegyedik + outputOtodik + outputHatodik + outputHetedik;
             
-        }
-
-
     }
-    xhr.send();
 
 
-}
+    
+    
+
+
