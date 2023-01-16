@@ -15,16 +15,12 @@ var idojaras    = document.getElementById("idojaras");
 
     // sorba rendezi a város neveket és kiírja
 
-    window.addEventListener("load", function()  {
+    window.addEventListener("load", async ()  =>  {
 
-        var xhr = new XMLHttpRequest();
+        let res = await fetch("hu.json");
+        let data = await res.json();
 
-        xhr.open("GET", "hu.json", true);
 
-        xhr.onload = function() {
-
-            if(xhr.status === 200)  {
-                var data = JSON.parse(xhr.responseText);
                 console.log(data);
 
                 data = data.sort((a, b) => {
@@ -47,12 +43,8 @@ var idojaras    = document.getElementById("idojaras");
                 }
                 varosAdatok.innerHTML = varosAdatokOutput;
                 varosNevek.innerHTML = output;
-            }
-
-
             
-        }
-        xhr.send();
+
     })
 
 
@@ -67,7 +59,7 @@ var idojaras    = document.getElementById("idojaras");
         
 
         
-        //console.log(eredmeny);
+        console.log(eredmeny);
 
         link = `https://api.open-meteo.com/v1/forecast?latitude=${eredmeny.textContent}&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,showers_sum,snowfall_sum&current_weather=true&timezone=Europe%2FBerlin`;
 
@@ -86,18 +78,10 @@ var idojaras    = document.getElementById("idojaras");
     
 window.addEventListener("load", idojarasLekeres());
 
-    function idojarasLekeres() {
+    async function idojarasLekeres() {
         
-
-
-    var xhr = new XMLHttpRequest();
-
-    xhr.open("GET", link, true);
-
-    xhr.onload = function() {
-
-        if(xhr.status === 200)  {
-            var data = JSON.parse(xhr.responseText);
+        let res = await fetch(link);
+        let data = await res.json();
             console.log(data);
 
             var dateOutput = `<span class="bold">Idő: </span>${data.current_weather.time} ${data.timezone_abbreviation}`;
@@ -385,11 +369,10 @@ window.addEventListener("load", idojarasLekeres());
             
             napok.innerHTML = outputElso + outputMasodik + outputHarmadik + outputNegyedik + outputOtodik + outputHatodik + outputHetedik;
             
-        }
-
-
     }
-    xhr.send();
 
 
-}
+    
+    
+
+
